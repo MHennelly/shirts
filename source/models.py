@@ -22,7 +22,7 @@ class Item(BaseModel):
     id = db.Column(db.Integer, primary_key=True, unique=True)
     size = db.Column(db.Enum(Size))
     inventory = db.Column(db.Integer)
-    orders = db.relationship("Order", back_ref="order", lazy=True)
+    orders = db.relationship("Order", backref="order", lazy=True)
 
 
 class Order(BaseModel):

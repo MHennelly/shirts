@@ -47,6 +47,7 @@ repos:
     rev: 'v2.15.2'
     hooks:
     -   id: pylint
-        args: ['--disable=C,R0903']
+        args: ['--disable=C,R0903,E1101']
         additional_dependencies:
             - flask
+            - flask_sqlalchemy

@@ -8,6 +8,8 @@ authors = ["Mike Hennelly <mike@mhennelly.com>"]
 python = "^3.10"
 Flask = "^2.2.2"
 pre-commit = "^2.20.0"
+marshmallow = "^3.18.0"
+Flask-SQLAlchemy = "^2.5.1"
 
 [tool.poetry.dev-dependencies]
 

@@ -8,9 +8,11 @@ class Config:
 
 
 class DevelopmentConfig(Config):
+    STAGE = "DEV"
     TESTING = False
     SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(basedir, "db.sqlite")
 
 
 class ProductionConfig(Config):
+    STAGE = "PROD"
     TESTING = False

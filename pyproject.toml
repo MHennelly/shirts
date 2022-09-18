@@ -6,6 +6,8 @@ authors = ["Mike Hennelly <mike@mhennelly.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+Flask = "^2.2.2"
+pre-commit = "^2.20.0"
 
 [tool.poetry.dev-dependencies]
 

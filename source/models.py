@@ -22,7 +22,7 @@ class Item(BaseModel):
     id = db.Column(db.Integer, primary_key=True, unique=True)
     size = db.Column(db.Enum(Size))
     inventory = db.Column(db.Integer)
-    orders = db.relationship("Order", backref="order", lazy=True)
+    item_orders = db.relationship("Order", backref="order_items", lazy=True)
 
 
 class Order(BaseModel):
@@ -33,3 +33,13 @@ class Order(BaseModel):
     state = db.Column(db.Enum(State), nullable=False)
     postal_code = db.Column(db.String(16), nullable=False)
     item_id = db.Column(db.Integer, db.ForeignKey("item.id"), nullable=False)
+    contact_id = db.Column(db.Integer, db.ForeignKey("contact.id"), nullable=False)
+
+
+class Contact(BaseModel):
+    id = db.Column(db.Integer, primary_key=True, unique=True)
+    first = db.Column(db.String(32), nullable=False)
+    last = db.Column(db.String(32), nullable=False)
+    email = db.Column(db.String(32), nullable=False)
+    phone = db.Column(db.String(32), nullable=False)
+    contact_orders = db.relationship("Order", backref="order_contacts", lazy=True)

@@ -18,4 +18,4 @@ if app.config.get("STAGE") == "DEV":
 
 @app.route("/")
 def index():
-    return render_template('home.html')
+    return render_template("home.html")

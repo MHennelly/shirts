@@ -79,6 +79,22 @@ async = ["asgiref (>=3.2)"]
 dotenv = ["python-dotenv"]
 
 [[package]]
+name = "flask-admin"
+version = "1.6.0"
+description = "Simple and extensible admin interface framework for Flask"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+Flask = ">=0.7"
+wtforms = "*"
+
+[package.extras]
+aws = ["boto"]
+azure = ["azure-storage-blob"]
+
+[[package]]
 name = "flask-migrate"
 version = "3.1.0"
 description = "SQLAlchemy database migrations for Flask applications using Alembic."
@@ -325,10 +341,24 @@ MarkupSafe = ">=2.1.1"
 [package.extras]
 watchdog = ["watchdog"]
 
+[[package]]
+name = "wtforms"
+version = "3.0.1"
+description = "Form validation and rendering for Python web development."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+MarkupSafe = "*"
+
+[package.extras]
+email = ["email-validator"]
+
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "775c1e8de3a1cc1bc1fc150cf8192c6d2e271603d86c67e536c09821ace4f515"
+content-hash = "e990d54b6df84af805b03f3b9997831d0c496084291594b7044ed7899c4e777a"
 
 [metadata.files]
 alembic = []
@@ -344,6 +374,7 @@ colorama = [
 distlib = []
 filelock = []
 flask = []
+flask-admin = []
 flask-migrate = []
 flask-sqlalchemy = []
 greenlet = []
@@ -403,3 +434,4 @@ sqlalchemy = []
 toml = []
 virtualenv = []
 werkzeug = []
+wtforms = []

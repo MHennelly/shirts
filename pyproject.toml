@@ -11,6 +11,7 @@ pre-commit = "^2.20.0"
 marshmallow = "^3.18.0"
 Flask-SQLAlchemy = "^2.5.1"
 Flask-Migrate = "^3.1.0"
+Flask-Admin = "^1.6.0"
 
 [tool.poetry.dev-dependencies]
 

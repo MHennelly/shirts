@@ -21,7 +21,7 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/order", methods=["GET","POST"])
+@app.route("/order", methods=["GET", "POST"])
 def order():
     if request.method == "GET":
         return render_template("order.html")

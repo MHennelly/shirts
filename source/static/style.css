@@ -1,4 +1,8 @@
-body {
-    background-color: BlueViolet;
-    color: white;
+html, body {
+    font-family: 'Courier New', Courier, monospace;
+    height: 100%;
+}
+
+.jumbotron {
+    margin-top: 50px;
 }

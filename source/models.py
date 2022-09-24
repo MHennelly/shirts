@@ -27,11 +27,6 @@ class Item(BaseModel):
 
 class Order(BaseModel):
     id = db.Column(db.Integer, primary_key=True, unique=True)
-    address1 = db.Column(db.String(32), nullable=False)
-    address2 = db.Column(db.String(32))
-    city = db.Column(db.String(32), nullable=False)
-    state = db.Column(db.Enum(State), nullable=False)
-    postal_code = db.Column(db.String(16), nullable=False)
     item_id = db.Column(db.Integer, db.ForeignKey("item.id"), nullable=False)
     contact_id = db.Column(db.Integer, db.ForeignKey("contact.id"), nullable=False)
 

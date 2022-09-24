@@ -3,24 +3,25 @@
 {% block content %}
   <div class="row justify-content-center">
     <div class="col-6">
-      <div class="jumbotron">
-        <div class="text-center">
-          <h1 class="display-4">&#x1F929; M o j i \t &#x1F929;</h1>
-          <p class="lead">crypto-powered tees for $1</p>
-        </div>
-        <hr class="my-4">
-        <p>how it works:</p>
-        <ul>
-          <li>you make an order</li>
-          <li>we generate a hash of a unique, secret passphrase</li>
-          <li>we print the shirt and write the passphrase on it</li>
-          <li>we mint an nft of the shirt as proof we sold it</li>
-          <li>you get the t-shirt and passphrase</li>
-        </ul>
-      </div>
+      <p>how it works:</p>
+      <ul>
+        <li>you make an order</li>
+        <li>we confirm order with you, we only do on-demand private sales</li>
+        <li>we generate a hash of a unique, secret passphrase</li>
+        <li>we print the shirt and write the passphrase on it</li>
+        <li>we mint an nft of the shirt as indestructible proof we sold it</li>
+        <li>you get the t-shirt and passphrase</li>
+      </ul>
+      <p>why it works:</p>
+      <ul>
+        <li>you can only create the hash if you know the secret passphrase</li>
+        <li>this means bootlegs are easily spotted</li>
+        <li>if the tee doesn't have a hash we've minted before then it's definitely bootleg</li>
+        <li>if it does have a hash we've minted before, then it's only legit if the seller can re-create the hash</li>
+        <li>only legit sellers can re-create the hash because only they know the tee's passphrase</li>
+        <li>a tee is only bootleg-safe as long as the passphrase is kept secret by all previous owners</li>
+      </ul>
+      <a href="/order" class="btn btn-outline-light">Place An Order</a>
     </div>
-  </div>
-  <div class="row">
-    
   </div>
 {% endblock %}

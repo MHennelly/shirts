@@ -53,3 +53,5 @@ repos:
             - flask_sqlalchemy
             - flask_migrate
             - flask_admin
+            - marshmallow
+            - marshmallow_enum

@@ -205,6 +205,17 @@ lint = ["mypy (==0.971)", "flake8 (==5.0.4)", "flake8-bugbear (==22.9.11)", "pre
 tests = ["pytest", "pytz", "simplejson"]
 
 [[package]]
+name = "marshmallow-enum"
+version = "1.5.1"
+description = "Enum field for Marshmallow"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+marshmallow = ">=2.0.0"
+
+[[package]]
 name = "nodeenv"
 version = "1.7.0"
 description = "Node.js virtual environment builder"
@@ -358,7 +369,7 @@ email = ["email-validator"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "e990d54b6df84af805b03f3b9997831d0c496084291594b7044ed7899c4e777a"
+content-hash = "262a868a3c2849a4f5c478f3354cd06712c715b6711a10fa0cda36e57a2910fd"
 
 [metadata.files]
 alembic = []
@@ -384,6 +395,7 @@ jinja2 = []
 mako = []
 markupsafe = []
 marshmallow = []
+marshmallow-enum = []
 nodeenv = []
 packaging = [
     {file = "packaging-21.3-py3-none-any.whl", hash = "sha256:ef103e05f519cdc783ae24ea4e2e0f508a9c99b2d4969652eed6a2e1ea5bd522"},

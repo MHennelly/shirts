@@ -1,18 +1,24 @@
+import logging.config
 import os
+import secrets
 
-basedir = os.path.abspath(os.path.dirname(__file__))
+from dotenv import load_dotenv
 
 
 class Config:
-    TESTING = False
+    SECRET_KEY = secrets.token_urlsafe(32)
+
+    def __init__(self):
+        load_dotenv()
+        self.TESTING = os.environ.get("TESTING", False)
+        self.MIGRATING = os.environ.get("MIGRATING", False)
+        self.ENV = os.environ["ENV"]
+        self.SQLALCHEMY_DATABASE_URI = os.environ["SQLALCHEMY_DATABASE_URI"]
 
 
-class DevelopmentConfig(Config):
-    STAGE = "DEV"
-    TESTING = False
-    SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(basedir, "db.sqlite")
-
-
-class ProductionConfig(Config):
-    STAGE = "PROD"
-    TESTING = False
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[logging.FileHandler("shirts.log"), logging.StreamHandler()],
+)
+logger = logging.getLogger(__name__)

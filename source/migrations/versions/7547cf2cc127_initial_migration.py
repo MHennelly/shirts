@@ -1,15 +1,15 @@
-"""Initial Migration
+""" Initial Migration
 
-Revision ID: 84ce5e55b294
+Revision ID: 7547cf2cc127
 Revises:
-Create Date: 2022-09-17 23:20:10.305848
+Create Date: 2022-09-26 15:13:18.171778
 
 """
 import sqlalchemy as sa
 from alembic import op
 
 # revision identifiers, used by Alembic.
-revision = "84ce5e55b294"
+revision = "7547cf2cc127"
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -21,20 +21,22 @@ def upgrade():
         "item",
         sa.Column("id", sa.Integer(), nullable=False),
         sa.Column(
-            "size", sa.Enum("XS", "S", "M", "L", "XL", name="size"), nullable=True
+            "size", sa.Enum("XS", "S", "M", "L", "XL", name="size"), nullable=False
         ),
-        sa.Column("inventory", sa.Integer(), nullable=True),
+        sa.Column("inventory", sa.Integer(), nullable=False),
         sa.PrimaryKeyConstraint("id"),
         sa.UniqueConstraint("id"),
     )
     op.create_table(
         "order",
         sa.Column("id", sa.Integer(), nullable=False),
-        sa.Column("address1", sa.String(length=32), nullable=False),
-        sa.Column("address2", sa.String(length=32), nullable=True),
-        sa.Column("city", sa.String(length=32), nullable=False),
-        sa.Column("state", sa.Enum("CA", name="state"), nullable=False),
-        sa.Column("postal_code", sa.String(length=16), nullable=False),
+        sa.Column("created_at", sa.DateTime(), nullable=False),
+        sa.Column("first", sa.String(length=32), nullable=False),
+        sa.Column("last", sa.String(length=32), nullable=False),
+        sa.Column("email", sa.String(length=32), nullable=False),
+        sa.Column("phone", sa.String(length=32), nullable=False),
+        sa.Column("fulfilled", sa.Boolean(), nullable=False),
+        sa.Column("hash", sa.String(length=64), nullable=True),
         sa.Column("item_id", sa.Integer(), nullable=False),
         sa.ForeignKeyConstraint(
             ["item_id"],

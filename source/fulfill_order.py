@@ -1,8 +1,8 @@
 import sys
 
-from app import app
-from config import logger
-from models import Item, Order, db
+from source.app import app
+from source.config import logger
+from source.models import Item, Order, db
 
 
 def main(argv: list[str]) -> None:

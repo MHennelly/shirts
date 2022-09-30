@@ -1,6 +1,6 @@
-from config import logger
-from models import Item, Order, db
-from schemas import OrderRequest, OrderResponse
+from source.config import logger
+from source.models import Hash, Item, Order, db
+from source.schemas import HashResponse, OrderRequest, OrderResponse
 
 
 def add_order(req: OrderRequest) -> OrderResponse:
@@ -24,3 +24,8 @@ def add_order(req: OrderRequest) -> OrderResponse:
         logger.info(e)
         return OrderResponse(succeeded=False)
     return OrderResponse(succeeded=True)
+
+
+def get_hashes() -> HashResponse:
+    hashes = Hash.query.order_by(Hash.created_at).all()
+    return HashResponse(hashes=hashes)

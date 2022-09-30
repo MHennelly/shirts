@@ -1,9 +1,11 @@
 from dataclasses import dataclass
+from datetime import datetime
 
 from marshmallow import EXCLUDE, Schema, post_load
-from marshmallow.fields import Bool, Str
+from marshmallow.fields import Str
 from marshmallow_enum import EnumField
-from models import Size
+
+from source.models import Size
 
 
 @dataclass
@@ -35,9 +37,12 @@ class OrderResponse:
     succeeded: bool
 
 
-class OrderResponseSchema(Schema):
-    succeeded = Bool(required=True)
+@dataclass
+class Hash:
+    val: str
+    created_at: datetime
 
-    @post_load
-    def __post_load__(self, data, **kwargs) -> OrderResponse:
-        return OrderResponse(**data)
+
+@dataclass
+class HashResponse:
+    hashes: list[Hash]

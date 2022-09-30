@@ -27,6 +27,5 @@ def add_order(req: OrderRequest) -> OrderResponse:
 
 
 def get_hashes() -> HashResponse:
-    hashes = db.session.execute(db.select(Hash).order_by(Hash.created_at)).all()
-    print(hashes)
+    hashes = Hash.query.order_by(Hash.created_at).all()
     return HashResponse(hashes=hashes)

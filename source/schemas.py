@@ -1,11 +1,10 @@
 from dataclasses import dataclass
-from datetime import datetime
 
 from marshmallow import EXCLUDE, Schema, post_load
 from marshmallow.fields import Str
 from marshmallow_enum import EnumField
 
-from source.models import Size
+from source.models import Hash, Size
 
 
 @dataclass
@@ -35,12 +34,6 @@ class OrderRequestSchema(Schema):
 @dataclass
 class OrderResponse:
     succeeded: bool
-
-
-@dataclass
-class Hash:
-    val: str
-    created_at: datetime
 
 
 @dataclass

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col col-4">
+        <p>Regular Collection</p>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Item</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in regular %}
+            <tr>
+                <th scope="row">{{ item.name }}</th>
+                <td><a href="/order?item={{item.name}}">IMG GO HERE</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="col col-4">
+        <p>Limited Collection</p>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Item</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in limited %}
+            <tr>
+                <th scope="row">{{ item.name }}</th>
+                <td><a href="/order?item={{item.name}}">IMG GO HERE</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+  </div>
+{% endblock %}

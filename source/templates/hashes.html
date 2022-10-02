@@ -9,14 +9,16 @@
                 <th scope="col"></th>
                 <th scope="col">Hash</th>
                 <th scope="col">Date</th>
+                <th scope="col">Item</th>
             </tr>
             </thead>
             <tbody>
-            {% for hash in hashes %}
+            {% for hash,name in hashes %}
             <tr>
                 <th scope="row">#{{ loop.index0 }}</th>
-                <td>{{ hash.val }}</td>
+                <td>{{ hash.value }}</td>
                 <td>{{ hash.created_at }}</td>
+                <td>{{ name }}</td>
             </tr>
             {% endfor %}
             </tbody>

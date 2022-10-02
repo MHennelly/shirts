@@ -2,9 +2,10 @@ from flask import Flask, render_template, request
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 from flask_migrate import Migrate
+from marshmallow.schema import ValidationError
 
 from source import controllers
-from source.config import Config
+from source.config import Config, logger
 from source.models import Hash, Item, Order, db
 from source.schemas import (HashResponse, OrderRequest, OrderRequestSchema,
                             OrderResponse)
@@ -28,9 +29,24 @@ def index() -> str:
 
 @app.route("/order", methods=["GET", "POST"])
 def order() -> str:
+    item = request.args.get("item")
     if request.method == "GET":
-        return render_template("order.html")
-    req: OrderRequest = OrderRequestSchema().load(request.form.to_dict())
+        return (
+            render_template("order_form.html")
+            if item
+            else render_template(
+                "store.html",
+                regular=Item.query.filter_by(limited=False).all(),
+                limited=Item.query.filter_by(limited=True).all(),
+            )
+        )
+    try:
+        req: OrderRequest = OrderRequestSchema().load(
+            {"item": item, "phone": request.form.get("phone")}
+        )
+    except ValidationError as e:
+        logger.info(e)
+        return render_template("order_error.html")
     res: OrderResponse = controllers.add_order(req)
     return render_template("order_response.html", succeeded=res.succeeded)
 

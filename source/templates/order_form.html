@@ -3,25 +3,7 @@
 {% block content %}
   <div class="row justify-content-center">
     <div class="col col-4">
-      <form action="/order" method="POST" style="margin: 0 auto;">
-        <div class="form-group text-align-center">
-          <div class="input-group w-100">
-            <span class="input-group-text">first name:</span>
-            <input type="text" class="form-control" placeholder="Place" name="first" required>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="input-group w-100">
-            <span class="input-group-text">last name:</span>
-            <input type="text" class="form-control" placeholder="Holder" name="last" required>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="input-group w-100">
-            <span class="input-group-text">@</span>
-            <input type="email" class="form-control" placeholder="place@holder.com" name="email" required>
-          </div>
-        </div>
+      <form method="POST" style="margin: 0 auto;">
         <div class="form-group">
           <div class="input-group w-100">
             <span class="input-group-text" id="basic-addon1">
@@ -33,18 +15,7 @@
           </div>
           <small class="form-text text-white">phone format: 234-567-8910</small>
         </div>
-        <div class="form-group">
-          <label class="my-1 mr-2" for="size">tee size (unisex)</label>
-          <select class="custom-select my-1 mr-sm-2" id="size" name="size" required>
-            <option value="" selected>select size...</option>
-            <option value="XS">XS</option>
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
-            <option value="XL">XL</option>
-          </select>
-        </div>
-        <button type="submit" class="btn btn-outline-dark">submit</button>
+        <button type="submit" class="btn btn-outline-dark">request order</button>
       </form>
     </div>
   </div>

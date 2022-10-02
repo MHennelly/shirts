@@ -47,7 +47,7 @@ def upgrade():
     op.create_table(
         "hash",
         sa.Column("id", sa.Integer(), nullable=False),
-        sa.Column("val", sa.String(length=64), nullable=True),
+        sa.Column("value", sa.String(length=64), nullable=True),
         sa.Column("created_at", sa.DateTime(), nullable=False),
         sa.Column("order_id", sa.Integer(), nullable=False),
         sa.ForeignKeyConstraint(

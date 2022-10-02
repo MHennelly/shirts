@@ -32,7 +32,7 @@ def order() -> str:
     item = request.args.get("item")
     if request.method == "GET":
         return (
-            render_template("order_form.html", item=item)
+            render_template("order_form.html")
             if item
             else render_template(
                 "store.html",

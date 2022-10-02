@@ -1,17 +1,20 @@
-FROM python:3
+FROM python:3.10-slim-buster
+
+RUN apt update && \
+    apt upgrade -y && \
+    apt install -y gcc libpq-dev && \
+    apt clean
 
 WORKDIR /usr/src/app
-
-COPY . .
+COPY poetry.lock pyproject.toml /usr/src/app/
 
 RUN pip install poetry
 
-RUN poetry config virtualenvs.create false
+RUN poetry config virtualenvs.create false \
+    && poetry install --no-interaction --no-ansi
 
-RUN poetry install
+COPY ./source /usr/src/app/source
 
-WORKDIR source
-
-CMD ["poetry", "run", "gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "source.app:app"]
 
 EXPOSE 5000

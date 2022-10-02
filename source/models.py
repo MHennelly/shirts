@@ -11,6 +11,7 @@ class Item(BaseModel):
     name = db.Column(db.String(64))
     limited = db.Column(db.Boolean, nullable=False)
     item_hashes = db.relationship("Hash", backref="item", lazy=True)
+    item_orders = db.relationship("Order", backref="item", lazy=True)
 
 
 class Hash(BaseModel):

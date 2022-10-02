@@ -8,7 +8,7 @@ def add_order(req: OrderRequest) -> OrderResponse:
         item = Item.query.filter_by(name=req.item).first()
         if not item:
             raise ValueError("Item Doesn't Exist")
-        if item.limited and any(order.fulfilled for order in item.item_orders):
+        if item.limited and any(order.hash_id for order in item.item_orders):
             raise ValueError("Limited Item Already Sold")
         order = Order(phone=req.phone, item_id=item.id)
         db.session.add(order)
@@ -22,4 +22,4 @@ def add_order(req: OrderRequest) -> OrderResponse:
 def get_hashes() -> HashResponse:
     hashes = Hash.query.order_by(Hash.created_at).all()
     names = [Item.query.get(h.item_id).name for h in hashes]
-    return HashResponse(hashes=[(h, n) for h, n in zip(hashes, names)])
+    return HashResponse(hashes=list(zip(hashes, names)))

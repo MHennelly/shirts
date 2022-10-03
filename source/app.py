@@ -8,7 +8,7 @@ from source import controllers
 from source.config import Config, logger
 from source.models import Hash, Item, Order, db
 from source.schemas import (HashResponse, OrderRequest, OrderRequestSchema,
-                            OrderResponse)
+                            OrderResponse, StoreResponse)
 
 app = Flask(__name__)
 app.config.from_object(Config())
@@ -31,14 +31,16 @@ def index() -> str:
 def order() -> str:
     item = request.args.get("item")
     if request.method == "GET":
-        return (
-            render_template("order_form.html")
-            if item
-            else render_template(
-                "store.html",
-                regular=Item.query.filter_by(limited=False).all(),
-                limited=Item.query.filter_by(limited=True).all(),
+        if item:
+            return render_template(
+                "order_form.html", item=item, exists=controllers.check_item(item)
             )
+        res: StoreResponse = controllers.get_store()
+        return render_template(
+            "store.html",
+            regular=res.regular,
+            limited_available=res.limited_available,
+            limited_unavailable=res.limited_unavailable,
         )
     try:
         req: OrderRequest = OrderRequestSchema().load(

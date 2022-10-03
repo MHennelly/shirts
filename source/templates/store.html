@@ -15,7 +15,7 @@
             {% for item in regular %}
             <tr>
                 <th scope="row">{{ item.name }}</th>
-                <td><a href="/order?item={{item.name}}">IMG GO HERE</a></td>
+                <td><a href="/order?item={{item.name}}"><img src="/static/img/items/{{item.name.lower()}}.jpg" alt="Item Image Missing"></a></td>
             </tr>
             {% endfor %}
             </tbody>
@@ -31,10 +31,16 @@
             </tr>
             </thead>
             <tbody>
-            {% for item in limited %}
+            {% for item in limited_available %}
             <tr>
                 <th scope="row">{{ item.name }}</th>
-                <td><a href="/order?item={{item.name}}">IMG GO HERE</a></td>
+                <td><a href="/order?item={{item.name}}"><img class="image-fluid" src="/static/img/items/{{item.name.lower()}}.jpg" alt="Item Image Missing"></a></td>
+            </tr>
+            {% endfor %}
+            {% for item in limited_unavailable %}
+            <tr>
+                <th scope="row">{{ item.name }}</th>
+                <td><img class="unavailable img-fluid" src="/static/img/items/{{item.name.lower()}}.jpg" alt="Item Image Missing"></td>
             </tr>
             {% endfor %}
             </tbody>

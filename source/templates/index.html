@@ -5,15 +5,16 @@
     <div class="col-6">
       <p>background:</p>
       <ul>
-        <li>a common way of encrypting text is to use hashing, a "hash" is what comes out of hashing</li>
-        <li>hashes look like <a href="/hashes">this</a></li>
-        <li>hashes are really, really hard to reverse - if you could do it with SHA-512 you'd get paid a lot (like a lot a lot) of money</li>
+        <li>a common way of encrypting text is to use hashing</li>
+        <li>hashing is when you give readable, plain text to a special function and it gives you back encrypted text</li>
+        <li>a "hash" is the encrypted text that comes out of the special function, hashes look like <a href="/hashes">this</a></li>
+        <li>good hashing functions make their hashes impossible to reverse, if you could reverse SHA-512 hashes you'd get paid a lot (like a lot a lot) of money</li>
       </ul>
       <p>how it works:</p>
       <ul>
         <li>we create a hash with SHA-512 from a unique, secret passphrase</li>
-        <li>we print a shirt with the hash on it</li>
-        <li>we mint the hash, this gives it public certification so fakes are easily spotted</li>
+        <li>we mint the hash, this process gives it our signature so it stands apart from the fakes</li>
+        <li>we print a single shirt with this hash on it, we never re-print hashes</li>
         <li>you get the t-shirt and passphrase</li>
         <li>you are the only (and we mean only) person in the entire world who can hash our t-shirt</li>
       </ul>
@@ -21,8 +22,9 @@
       <ul>
         <li><code>$ echo -n "PASSPHRASE HERE" | sha512sum</code></li>
         <li>^ run that in a command line and your output will be what's printed on our shirt</li>
-        <li>anyone who bootlegs our shirts will never be able to guess the right passphrase</li>
-        <li>bootlegs can easily be spotted this way, only legit owners can run this command successfully</li>
+        <li>anyone who makes a copy of your shirt will never be able to guess the right passphrase</li>
+        <li>bootleggers can always be spotted by asking them to successfully run that command (they can't because they don't know the passphrase)</li>
+        <li>as long as your passphrase is kept a secret, your shirt is 100% bootleg proof</li>
       </ul>
       <p>more info:</p>
       <ul>

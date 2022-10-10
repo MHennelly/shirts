@@ -5,7 +5,7 @@ WIP
 ## Running Scripts
 
 ```
-PYTHONPATH=$(pwd) # Run this inside /source or just manually write the path
+PYTHONPATH=$(pwd) # Run this inside top-level directory
 export PYTHONPATH
 python scripts/SCRIPT_FILE.py
 ```

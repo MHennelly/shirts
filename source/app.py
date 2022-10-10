@@ -13,8 +13,7 @@ from source.schemas import (HashResponse, OrderRequest, OrderRequestSchema,
 app = Flask(__name__)
 app.config.from_object(Config())
 db.init_app(app)
-if app.config["MIGRATING"]:
-    migrate = Migrate(app, db)
+migrate = Migrate(app, db)
 if app.config["ENV"] == "DEV":
     admin = Admin(app)
     admin.add_view(ModelView(Item, db.session))

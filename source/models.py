@@ -16,7 +16,7 @@ class Item(BaseModel):
 
 class Hash(BaseModel):
     id = db.Column(db.Integer, primary_key=True, unique=True)
-    value = db.Column(db.String(64))
+    value = db.Column(db.String(128), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
     item_id = db.Column(db.Integer, db.ForeignKey("item.id"), nullable=False)
     hash_order = db.relationship("Order", backref="hash", lazy=True)

@@ -20,7 +20,7 @@ class OrderRequestSchema(Schema):
     phone = String(required=True)
 
     @post_load
-    def __post_load__(self, data) -> OrderRequest:
+    def __post_load__(self, data, **kwargs) -> OrderRequest:
         return OrderRequest(**data)
 
 

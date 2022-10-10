@@ -39,8 +39,6 @@ def order() -> str:
         return render_template(
             "store.html",
             regular=res.regular,
-            limited_available=res.limited_available,
-            limited_unavailable=res.limited_unavailable,
         )
     try:
         req: OrderRequest = OrderRequestSchema().load(
@@ -57,3 +55,8 @@ def order() -> str:
 def hashes() -> str:
     res: HashResponse = controllers.get_hashes()
     return render_template("hashes.html", hashes=res.hashes)
+
+
+@app.route("/try", methods=["GET"])
+def try_hash() -> str:
+    return render_template("try.html")

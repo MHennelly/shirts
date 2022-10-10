@@ -23,6 +23,8 @@
     </div>
     <div class="col col-4">
         <p>Limited Collection</p>
+        <small>Coming Soon...</small>
+        {% if false %}
         <table class="table">
             <thead>
             <tr>
@@ -34,7 +36,7 @@
             {% for item in limited_available %}
             <tr>
                 <th scope="row">{{ item.name }}</th>
-                <td><a href="/order?item={{item.name}}"><img class="image-fluid" src="/static/img/items/{{item.name.lower()}}.jpg" alt="Item Image Missing"></a></td>
+                <td><a href="/order?item={{item.name}}"><img class="img-fluid" src="/static/img/items/{{item.name.lower()}}.jpg" alt="Item Image Missing"></a></td>
             </tr>
             {% endfor %}
             {% for item in limited_unavailable %}
@@ -45,6 +47,7 @@
             {% endfor %}
             </tbody>
         </table>
+        {% endif %}
     </div>
   </div>
 {% endblock %}

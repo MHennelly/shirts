@@ -3,6 +3,19 @@ html, body {
     height: 100%;
 }
 
+ul {
+    list-style: square outside;
+}
+
+img {
+    max-height: 100px;
+}
+
 .jumbotron {
-    margin-top: 50px;
+    margin-top: 25px;
+}
+
+.unavailable {
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
 }

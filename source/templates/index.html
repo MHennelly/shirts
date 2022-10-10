@@ -3,30 +3,31 @@
 {% block content %}
   <div class="row justify-content-center">
     <div class="col-6">
-      <p>background:</p>
+      <p>background info:</p>
       <ul>
-        <li>a common way of encrypting text is to use hashing, a "hash" is what comes out of hashing</li>
-        <li>hashes look like <a href="/hashes">this</a></li>
-        <li>hashes are really, really hard to reverse - if you could do it with SHA-512 you'd get paid a lot (like a lot a lot) of money</li>
+        <li><a href="https://youtu.be/b4b8ktEV4Bg">Hashing Algorithms & Security</a></li>
+        <li><a href="https://youtu.be/DMtFhACPnTY">SHA: Secure Hashing Algorithm</a></li>
+      </ul>
+      <p>the hashing command:</p>
+      <ul>
+        <code class="copy">read -s -p "Type Passphrase / Hit Enter: " X; echo "Hashing..."; for i in {1..10000}; do X=$(echo -n $X | sha512sum | tr -d ' -'); done; echo "Hash: $X";</code>
+        <br>
+        <small>you can also try an in-browser JS example of the same algorithm <a href="/try">here</a></small>
       </ul>
       <p>how it works:</p>
       <ul>
-        <li>we create a hash with SHA-512 from a unique, secret passphrase</li>
-        <li>we print a shirt with the hash on it</li>
-        <li>we mint the hash, this gives it public certification so fakes are easily spotted</li>
-        <li>you get the t-shirt and passphrase</li>
-        <li>you are the only (and we mean only) person in the entire world who can hash our t-shirt</li>
+        <li>we generate a new hash, mint it, and print it on a t-shirt</li>
+        <li>we give you the t-shirt and the passphrase</li>
+        <li>you will be the only person in the entire world who can run the hashing command and get the t-shirt's hash</li>
+        <li>fakes can be spotted by asking the wearer to run that command successfully, they can't because they don't know the passphrase</li>
+        <li>as long as you keep the passphrase secret, your shirt will be the only legit copy ever</li>
       </ul>
-      <p>why it works:</p>
+      <p>FAQ:</p>
       <ul>
-        <li><code>$ echo -n "PASSPHRASE HERE" | sha512sum</code></li>
-        <li>^ run that in a command line and your output will be what's printed on our shirt</li>
-        <li>anyone who bootlegs our shirts will never be able to guess the right passphrase</li>
-        <li>bootlegs can easily be spotted this way, only legit owners can run this command successfully</li>
-      </ul>
-      <p>more info:</p>
-      <ul>
-        <li><a href="https://en.wikipedia.org/wiki/SHA-2">https://en.wikipedia.org/wiki/SHA-2</a></li>
+        <li><b>do you keep the passphrases?</b>: no, never</li>
+        <li><b>why mint the hash?</b>: this gives it our signature so real Moji hashes are publicly known</li>
+        <li><b>how do I run the command?</b>: copy/paste it into the terminal application on your Linux or Mac computer and hit <code>Enter</code></li>
+        <li><b>why hash 10,000 times?</b>: this helps deter passphrase cracking by increasing the work needed to guess passphrases</li>
       </ul>
     </div>
   </div>

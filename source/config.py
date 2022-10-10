@@ -13,7 +13,11 @@ class Config:
         self.TESTING = os.environ.get("TESTING", False)
         self.MIGRATING = os.environ.get("MIGRATING", False)
         self.ENV = os.environ["ENV"]
-        self.SQLALCHEMY_DATABASE_URI = os.environ["SQLALCHEMY_DATABASE_URI"]
+        self.SQLALCHEMY_DATABASE_URI = (
+            os.environ["SQLALCHEMY_DATABASE_URI_PROD"]
+            if self.ENV == "PROD"
+            else os.environ["SQLALCHEMY_DATABASE_URI_DEV"]
+        )
 
 
 logging.basicConfig(

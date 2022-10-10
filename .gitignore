@@ -161,3 +161,6 @@ cython_debug/
 
 # Ignore SQLite development file
 *.sqlite
+
+# Ignore Product-Related Image Files
+/source/static/img/items/

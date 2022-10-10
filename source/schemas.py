@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from marshmallow import EXCLUDE, Schema, post_load
 from marshmallow.fields import String
 
-from source.models import Hash
+from source.models import Hash, Item
 
 
 @dataclass
@@ -32,3 +32,10 @@ class OrderResponse:
 @dataclass
 class HashResponse:
     hashes: list[tuple[Hash, str]]
+
+
+@dataclass
+class StoreResponse:
+    regular: list[Item]
+    limited_available: list[Item]
+    limited_unavailable: list[Item]

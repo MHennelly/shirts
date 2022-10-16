@@ -1,12 +1,10 @@
 from flask import Flask, render_template, request
-from flask_admin import Admin
-from flask_admin.contrib.sqla import ModelView
 from flask_migrate import Migrate
 from marshmallow.schema import ValidationError
 
 from source import controllers
 from source.config import Config, logger
-from source.models import Hash, Item, Order, db
+from source.models import db
 from source.schemas import (HashResponse, OrderRequest, OrderRequestSchema,
                             OrderResponse, StoreResponse)
 
@@ -14,11 +12,13 @@ app = Flask(__name__)
 app.config.from_object(Config())
 db.init_app(app)
 migrate = Migrate(app, db)
+"""
 if app.config["ENV"] == "DEV":
     admin = Admin(app)
     admin.add_view(ModelView(Item, db.session))
     admin.add_view(ModelView(Order, db.session))
     admin.add_view(ModelView(Hash, db.session))
+"""
 
 
 @app.route("/", methods=["GET"])
@@ -28,6 +28,8 @@ def index() -> str:
 
 @app.route("/order", methods=["GET", "POST"])
 def order() -> str:
+    if app.config["ALPHA"]:
+        return render_template("soon.html")
     item = request.args.get("item")
     if request.method == "GET":
         if item:
@@ -52,6 +54,8 @@ def order() -> str:
 
 @app.route("/hashes", methods=["GET"])
 def hashes() -> str:
+    if app.config["ALPHA"]:
+        return render_template("soon.html")
     res: HashResponse = controllers.get_hashes()
     return render_template("hashes.html", hashes=res.hashes)
 
